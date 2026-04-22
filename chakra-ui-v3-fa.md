@@ -1,3 +1,8 @@
+---
+name: ds-chakra-ui-fa
+description: "Chakra UI Design System"
+---
+
 <!-- version: 1 | updated: 2026-04-22 | changelog: توضیحات -->
 
 ## Chakra UI Design System
