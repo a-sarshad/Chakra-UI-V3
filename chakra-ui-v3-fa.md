@@ -1,6 +1,6 @@
 ---
 name: ds-chakra-ui-fa
-description: "Chakra UI Design System"
+description: "Use for ALL UI design and code tasks in Vitrina project that involve colors, typography, spacing, components, or tokens. Load automatically when working with Chakra UI design system, writing JSX/CSS, or making any visual decisions in Vitrina."
 ---
 
 <!-- version: 1 | updated: 2026-04-22 | changelog: توضیحات -->
