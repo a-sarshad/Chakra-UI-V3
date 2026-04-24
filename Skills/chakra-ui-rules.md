@@ -3,7 +3,7 @@ name: ds-chakra-ui-fa
 description: "Use for ALL UI design and code tasks in Vitrina project that involve colors, typography, spacing, components, or tokens. Load automatically when working with Chakra UI design system, writing JSX/CSS, or making any visual decisions in Vitrina."
 ---
 
-<!-- version: 1 | updated: 2026-04-22 | changelog: توضیحات -->
+<!-- version: 2 | updated: 2026-04-24 | changelog: اضافه شدن بخش Chakra UI MCP fallback و web_fetch strategy -->
 
 # Chakra UI [v3] FA — Rules
 > نسخه فشرده برای استفاده در Skill
@@ -111,8 +111,47 @@ description: "Use for ALL UI design and code tasks in Vitrina project that invol
 
 ---
 
+## Chakra UI MCP — استراتژی دسترسی به مستندات
+
+### وضعیت MCP
+Chakra UI MCP server (`@chakra-ui/react-mcp`) یک **stdio-based** server است و فقط در Claude Code / Cursor / VS Code قابل استفاده‌ست — **در claude.ai در دسترس نیست**.
+
+### جایگزین: web_fetch از مستندات رسمی
+
+هر بار که component ای ناشناخته بود یا props آن مبهم بود، **قبل از حدس زدن** از web_fetch استفاده کن:
+
+| نیاز | URL برای fetch |
+|------|---------------|
+| لیست همه components | `https://chakra-ui.com/docs/components/concepts/overview` |
+| props یک component خاص | `https://chakra-ui.com/docs/components/[component-name]` |
+| design tokens کامل | `https://chakra-ui.com/docs/theming/overview` |
+| مثال کد یک component | `https://chakra-ui.com/docs/components/[component-name]#usage` |
+
+### الگوی URL ها
+
+```
+Button    → https://chakra-ui.com/docs/components/button
+Input     → https://chakra-ui.com/docs/components/input
+Select    → https://chakra-ui.com/docs/components/select
+Table     → https://chakra-ui.com/docs/components/table
+Dialog    → https://chakra-ui.com/docs/components/dialog
+Drawer    → https://chakra-ui.com/docs/components/drawer
+Badge     → https://chakra-ui.com/docs/components/badge
+Tag       → https://chakra-ui.com/docs/components/tag
+Tabs      → https://chakra-ui.com/docs/components/tabs
+```
+
+### قانون استفاده
+
+1. اگه component در `chakra-ui-v3-fa.md` موجود بود → همان را استفاده کن
+2. اگه component ناشناخته یا props مبهم بود → `web_fetch` از URL مربوطه
+3. **هیچ‌وقت props را حدس نزن** — اشتباه در props باعث کد غیرقابل اجرا می‌شود
+
+---
+
 ## یادآوری‌های مهم
 
 - داده‌های کامل color tokens → `chakra-ui-v3-fa.md`
 - اگه token نامشخص بود → از PK سرچ کن، مقدار حدس نزن
 - dark mode tokens جدا هستند — پیش‌فرض light mode است مگر خلافش گفته شود
+- اگه component ناشناخته بود → web_fetch از chakra-ui.com/docs قبل از هر اقدام
